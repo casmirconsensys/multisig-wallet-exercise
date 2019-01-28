@@ -458,7 +458,7 @@ The `storedData` is now 5. And we can check that the address that updated the Si
 ```
 truffle(develop)> ss.caller.call()
 ‘0x855d1c79ad3fb086d516554dc7187e3fdfc1c79a’
-truffle(develop)> ms.address
+truffle(develop)> c
 ‘0x855d1c79ad3fb086d516554dc7187e3fdfc1c79a’
 ```
 
