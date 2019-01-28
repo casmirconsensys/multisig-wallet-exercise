@@ -85,9 +85,6 @@ modifier ownerDoesNotExist(address owner) {
     /// @param _required Number of required confirmations.
     constructor(address[] memory _owners, uint _required)
           public
-
-
-
           validRequirement(_owners.length, _required)
       {
           for (uint i=0; i<_owners.length; i++) {
@@ -129,7 +126,7 @@ modifier ownerDoesNotExist(address owner) {
     /// @dev Allows an owner to revoke a confirmation for a transaction.
     /// @param transactionId Transaction ID.
     function revokeConfirmation(uint transactionId)
-    public
+    public view
  {
     require(transactions[transactionId].executed == false);
  }
@@ -137,7 +134,7 @@ modifier ownerDoesNotExist(address owner) {
     /// @dev Allows anyone to execute a confirmed transaction.
     /// @param transactionId Transaction ID.
     function executeTransaction(uint transactionId)
-    public
+    public payable
 {
     require(transactions[transactionId].executed == false);
     if (isConfirmed(transactionId)) {
