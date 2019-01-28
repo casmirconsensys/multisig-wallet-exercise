@@ -88,7 +88,7 @@ modifier ownerDoesNotExist(address owner) {
           validRequirement(_owners.length, _required)
       {
           for (uint i=0; i<_owners.length; i++) {
-            if (isOwner[_owners[i]] || _owners[i] == address (0))
+            if (isOwner[_owners[i]] || _owners[i] == address(0))
               revert();
             isOwner[_owners[i]] = true;
           }
@@ -117,7 +117,7 @@ modifier ownerDoesNotExist(address owner) {
     public
   {
      require(isOwner[msg.sender]);
-     require(transactions[transactionId].destination != address (0));
+     require(transactions[transactionId].destination != address(0));
      require(confirmations[transactionId][msg.sender] == false);
      confirmations[transactionId][msg.sender] = true;
      executeTransaction(transactionId);
@@ -162,7 +162,7 @@ modifier ownerDoesNotExist(address owner) {
     returns (bool)
   {
     uint count = 0;
-     for(uint i=0; i<owners.length; i++) {
+     for(uint i = 0; i < owners.length; i++) {
         if (confirmations[transactionId][owners[i]])
             count += 1;
         if (count == required)
@@ -185,7 +185,7 @@ modifier ownerDoesNotExist(address owner) {
       data: data,
       executed: false
     });
-    transactionCount +=1;
+    transactionCount += 1;
     emit Submission(transactionId);
   }
 }
